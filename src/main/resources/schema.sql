@@ -56,16 +56,6 @@ CREATE TABLE UserRoles (
 );
 
 
-# User Activities Table
-DROP TABLE IF EXISTS Roles;
-CREATE TABLE Roles (
-    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    permission VARCHAR(255) NOT NULL,
-    CONSTRAINT UQ_Roles_Name UNIQUE (name)
-);
-
-
 # Events Table
 DROP TABLE IF EXISTS Events;
 CREATE TABLE Events (
@@ -76,9 +66,9 @@ CREATE TABLE Events (
 );
 
 
-# UserRoles Table
-DROP TABLE IF EXISTS UserEvent;
-CREATE TABLE UserEvent (
+# User events Table
+DROP TABLE IF EXISTS UserEvents;
+CREATE TABLE UserEvents (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     user_id BIGINT UNSIGNED NOT NULL,
     event_id BIGINT UNSIGNED NOT NULL,
@@ -87,4 +77,43 @@ CREATE TABLE UserEvent (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users (id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (event_id) REFERENCES Events (id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+
+# AccountVerification Table
+DROP TABLE IF EXISTS AccountVerification;
+CREATE TABLE AccountVerification (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT UNSIGNED NOT NULL,
+    url VARCHAR(255) NOT NULL,
+    -- date DATETIME NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES Users (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT UQ_AccountVerification_User_Id UNIQUE (user_id),
+    CONSTRAINT UQ_AccountVerification_Url UNIQUE (url)
+);
+
+
+# Reset password Table
+DROP TABLE IF EXISTS ResetPasswordVerification;
+CREATE TABLE ResetPasswordVerification (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT UNSIGNED NOT NULL,
+    url VARCHAR(255) NOT NULL,
+    expiration_date DATETIME NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES Users (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT UQ_ResetPasswordVerification_User_Id UNIQUE (user_id),
+    CONSTRAINT UQ_ResetPasswordVerification_Url UNIQUE (url)
+);
+
+
+# Two factor authentication Table
+DROP TABLE IF EXISTS TwoFactorVerification;
+CREATE TABLE TwoFactorVerification (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT UNSIGNED NOT NULL,
+    code VARCHAR(10) NOT NULL,
+    expiration_date DATETIME NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES Users (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT UQ_TwoFactorVerification_User_Id UNIQUE (user_id),
+    CONSTRAINT UQ_TwoFactorVerification_Code UNIQUE (code)
 );
