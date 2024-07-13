@@ -1,7 +1,7 @@
-package AuthGuard.SecureAuthTracker.repository;
+package AuthGuard.SecureAuthTracker.repositories;
 
 
-import AuthGuard.SecureAuthTracker.domain.Role;
+import AuthGuard.SecureAuthTracker.domains.Role;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;

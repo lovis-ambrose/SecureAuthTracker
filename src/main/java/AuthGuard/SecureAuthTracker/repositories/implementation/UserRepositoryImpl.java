@@ -1,13 +1,12 @@
-package AuthGuard.SecureAuthTracker.repository.implementation;
+package AuthGuard.SecureAuthTracker.repositories.implementation;
 
-import AuthGuard.SecureAuthTracker.domain.Role;
-import AuthGuard.SecureAuthTracker.domain.User;
+import AuthGuard.SecureAuthTracker.domains.Role;
+import AuthGuard.SecureAuthTracker.domains.User;
 import AuthGuard.SecureAuthTracker.exceptions.ApiException;
-import AuthGuard.SecureAuthTracker.repository.RoleRepository;
-import AuthGuard.SecureAuthTracker.repository.UserRepository;
+import AuthGuard.SecureAuthTracker.repositories.RoleRepository;
+import AuthGuard.SecureAuthTracker.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -22,8 +21,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import static AuthGuard.SecureAuthTracker.enumeration.RoleType.ROLE_USER;
-import static AuthGuard.SecureAuthTracker.enumeration.VerificationType.ACCOUNT;
+import static AuthGuard.SecureAuthTracker.enumerations.RoleType.ROLE_USER;
+import static AuthGuard.SecureAuthTracker.enumerations.VerificationType.ACCOUNT;
 import static AuthGuard.SecureAuthTracker.queries.UserQuery.*;
 import static java.util.Objects.requireNonNull;
 

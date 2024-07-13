@@ -1,6 +1,6 @@
-package AuthGuard.SecureAuthTracker.rowMapper;
+package AuthGuard.SecureAuthTracker.rowMappers;
 
-import AuthGuard.SecureAuthTracker.domain.Role;
+import AuthGuard.SecureAuthTracker.domains.Role;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

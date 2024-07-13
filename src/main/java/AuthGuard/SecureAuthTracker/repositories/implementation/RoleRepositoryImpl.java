@@ -1,9 +1,9 @@
-package AuthGuard.SecureAuthTracker.repository.implementation;
+package AuthGuard.SecureAuthTracker.repositories.implementation;
 
-import AuthGuard.SecureAuthTracker.domain.Role;
+import AuthGuard.SecureAuthTracker.domains.Role;
 import AuthGuard.SecureAuthTracker.exceptions.ApiException;
-import AuthGuard.SecureAuthTracker.repository.RoleRepository;
-import AuthGuard.SecureAuthTracker.rowMapper.RoleRowMapper;
+import AuthGuard.SecureAuthTracker.repositories.RoleRepository;
+import AuthGuard.SecureAuthTracker.rowMappers.RoleRowMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -14,7 +14,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import static AuthGuard.SecureAuthTracker.enumeration.RoleType.ROLE_USER;
+import static AuthGuard.SecureAuthTracker.enumerations.RoleType.ROLE_USER;
 import static AuthGuard.SecureAuthTracker.queries.RoleQuery.*;
 import static java.util.Objects.requireNonNull;
 

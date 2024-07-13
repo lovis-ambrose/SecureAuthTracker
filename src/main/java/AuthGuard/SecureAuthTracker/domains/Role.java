@@ -1,4 +1,4 @@
-package AuthGuard.SecureAuthTracker.domain;
+package AuthGuard.SecureAuthTracker.domains;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;

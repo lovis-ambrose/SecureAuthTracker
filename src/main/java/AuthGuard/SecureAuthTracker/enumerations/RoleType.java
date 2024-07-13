@@ -1,4 +1,4 @@
-package AuthGuard.SecureAuthTracker.enumeration;
+package AuthGuard.SecureAuthTracker.enumerations;
 
 public enum RoleType {
     ROLE_USER,
